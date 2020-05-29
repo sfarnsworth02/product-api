@@ -1,6 +1,15 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const Product = require('../product/product.model')
 
-const productSchema = new mongoose.Schema({
+/*
+    num,
+    name,
+    pcsa,
+    products,
+*/
+
+const partnerSchema = new Schema({
     num: {
         type: Number,
         required: true,
@@ -12,7 +21,7 @@ const productSchema = new mongoose.Schema({
     },
     pcsa: {
         type: Boolean,
-    }
+    },
 })
 
-module.exports = productSchema;
+module.exports = partnerSchema;

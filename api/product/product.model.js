@@ -1,14 +1,28 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const productSchema = new mongoose.Schema({
+/* 
+shortSku,
+fullSku,
+skuName,
+skuDesc, 
+category,
+fullImg, 
+largeImg,
+partner,
+status,
+*/
+
+const productSchema = new Schema({
     shortSku: {
         type: Number,
         required: true,
-        unique: true,
+        unique: false,
     },
-    optNum: {
-        type: Array,
+    fullSku: {
+        type: String,
         required: true,
+        unique:true
     },
     skuName: {
         type: String,
@@ -35,7 +49,16 @@ const productSchema = new mongoose.Schema({
         unique: false,
     },
     partner: {
-        
+        type: Schema.Types.ObjectId,
+        unique: false,
+        required: true,
+        ref: "Partner",
+    },
+    status: {
+        reqDate: {
+            type: Date,
+
+        },
     }
 })
 
