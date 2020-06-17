@@ -2,15 +2,29 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 /* 
-shortSku,
-fullSku,
-skuName,
-skuDesc, 
-category,
-fullImg, 
-largeImg,
-partner,
-status,
+{ 
+    "shortSku": ,
+    "fullSku": "",
+    "skuName": "",
+    "skuDesc": "",
+    "category": "",
+    "catTag": [""],
+    "largeImg": "",
+    "fullImg": [""],
+    "partner": {
+    	"num": ,
+    	"name":""
+    },
+    "status": {
+    	"status": "prop"
+        "reqDate": ,
+        "recDate": ,
+        "status":,
+        "condition": "",
+        "notes":[""],
+        "purgeDate":
+    }
+},
 */
 
 const productSchema = new Schema({
@@ -22,11 +36,12 @@ const productSchema = new Schema({
     fullSku: {
         type: String,
         required: true,
-        unique:true
+        unique: true,
     },
     skuName: {
         type: String,
         required: true,
+        unique: false,
     },
     skuDesc: {
         type: String,
@@ -38,8 +53,13 @@ const productSchema = new Schema({
         required: false,
         unique: false,
     },
+    catTag: {
+        type: Array,
+        required: false,
+        unique: false,
+    },
     fullImg: {
-        type: String,
+        type: Array,
         required: false,
         unique: false,
     }, 
@@ -49,16 +69,53 @@ const productSchema = new Schema({
         unique: false,
     },
     partner: {
-        type: Schema.Types.ObjectId,
-        unique: false,
-        required: true,
-        ref: "Partner",
+        num: {
+            type: Number,
+            required: true,
+            unique: false,
+        },
+        name: {
+            type: String,
+            required: true,
+            unique: false,
+        },
+        pcsa: {
+            type: String,
+            required: false,
+            unique: false,
+        },
     },
     status: {
         reqDate: {
             type: Date,
-
+            required: false,
+            unique: false,
         },
+        recDate: {
+            type: Date,
+            required: false,
+            unique: false,
+        },
+        condition: {
+            type: String,
+            required: false,
+            unique: false,
+        },
+        status: {
+            type: String,
+            required: false,
+            unique: false,
+        },
+        notes: {
+            type: Array,
+            required: false,
+            unique: false,
+        },
+        purgeDate: {
+            type: Date,
+            required: false,
+            unique: false,
+        }
     }
 })
 
